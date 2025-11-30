@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious Secret Cookies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            background-size: 200% 200%;
+            animation: gradientShift 10s ease-in-out infinite;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .emoji {
+            position: absolute;
+            font-size: 2.5em;
+            opacity: 0.4;
+            animation: float 5s ease-in-out infinite;
+            z-index: 0;
+        }
+        .emoji:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .emoji:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .emoji:nth-child(3) { top: 30%; left: 20%; animation-delay: 2s; }
+        .emoji:nth-child(4) { top: 40%; right: 10%; animation-delay: 3s; }
+        .emoji:nth-child(5) { top: 50%; left: 15%; animation-delay: 4s; }
+        .emoji:nth-child(6) { top: 60%; right: 20%; animation-delay: 0.5s; }
+        .emoji:nth-child(7) { top: 70%; left: 25%; animation-delay: 1.5s; }
+        .emoji:nth-child(8) { top: 80%; right: 25%; animation-delay: 2.5s; }
+        .emoji:nth-child(9) { top: 15%; left: 50%; animation-delay: 3.5s; }
+        .emoji:nth-child(10) { top: 25%; right: 50%; animation-delay: 4.5s; }
+        .emoji:nth-child(11) { top: 35%; left: 60%; animation-delay: 0.2s; }
+        .emoji:nth-child(12) { top: 45%; right: 60%; animation-delay: 1.2s; }
+        .emoji:nth-child(13) { top: 55%; left: 70%; animation-delay: 2.2s; }
+        .emoji:nth-child(14) { top: 65%; right: 70%; animation-delay: 3.2s; }
+        .emoji:nth-child(15) { top: 75%; left: 80%; animation-delay: 4.2s; }
+        .emoji:nth-child(16) { top: 85%; right: 80%; animation-delay: 0.7s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        h1 {
+            margin: 0;
+            font-size: 3.5em;
+            font-weight: 700;
+            font-family: 'Dancing Script', cursive;
+            position: relative;
+            z-index: 1;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            background: linear-gradient(45deg, #fff, #ffeaa7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: nameFloat 4s ease-in-out infinite;
+        }
+        @keyframes nameFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Social Media Buttons */
+        .social-buttons {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            margin: 20px 0;
+        }
+        .social-buttons a {
+            display: inline-block;
+            margin: 0 15px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            margin-bottom: 15px;
+            min-width: 200px;
+        }
+        .social-buttons a:hover {
+            background: linear-gradient(135deg, #e84393, #fd79a8);
+        }
+
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .social-buttons a {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+                max-width: 250px;
+                text-align: center;
+            }
+            .social-buttons {
+                padding: 30px 15px;
+            }
+        }
+
+        /* Promotional Banner */
+        .promo-banner {
+            background: linear-gradient(135deg, #ff7675, #fd79a8);
+            color: white;
+            padding: 20px 0;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .promo-content {
+            display: flex;
+            animation: scrollBanner 25s linear infinite;
+            white-space: nowrap;
+        }
+        
+        .promo-item {
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .promo-icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+        
+        .promo-highlight {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-left: 10px;
+            font-weight: 700;
+        }
+        
+        @keyframes scrollBanner {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            margin: 15px 0 10px;
+            font-size: 1.8em;
+            color: #e84393;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-card p {
+            padding: 0 20px;
+            font-size: 0.95em;
+            min-height: 60px;
+        }
+
+        .price {
+            font-weight: 600;
+            color: #fd79a8;
+            font-size: 1.3em;
+            margin: 15px 0;
+        }
+
+        .quick-info {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 20px;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-label {
+            font-size: 0.8em;
+            color: #999;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: #e84393;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #e84393;
+            font-size: 3em;
+            margin: 50px 0 30px 0;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #333;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .promo-item {
+                font-size: 0.9em;
+                padding: 0 20px;
+            }
+            
+            .promo-icon {
+                font-size: 1.2em;
+                margin-right: 10px;
+            }
+            
+            .product-card h3 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span class="emoji">🍰</span>
+        <span class="emoji">🌸</span>
+        <span class="emoji">🍪</span>
+        <span class="emoji">🌺</span>
+        <span class="emoji">🍰</span>
+        <span class="emoji">🌼</span>
+        <span class="emoji">🍪</span>
+        <span class="emoji">🌸</span>
+        <span class="emoji">🍰</span>
+        <span class="emoji">🌺</span>
+        <span class="emoji">🍪</span>
+        <span class="emoji">🌼</span>
+        <span class="emoji">🍰</span>
+        <span class="emoji">🌸</span>
+        <span class="emoji">🍪</span>
+        <span class="emoji">🌺</span>
+        <h1>Delicious Secret Cookies</h1>
+    </header>
+    
+    <section class="social-buttons">
+        <a href="https://www.instagram.com/delicessucrescookies?igsh=NDQxamF1MTN2M2R6" target="_blank">Follow on Instagram</a>
+        <a href="http://tiktok.com/@delicessucrescook" target="_blank">Follow on TikTok</a>
+        <a href="https://wa.me/212714041674" target="_blank">Contact via WhatsApp</a>
+    </section>
+    
+    <!-- Promotional Banner Section -->
+    <section class="promo-banner">
+        <div class="promo-content">
+            <div class="promo-item">
+                <span class="promo-icon">🎉</span>
+                <span>SPECIAL OFFER: Free Delivery on Orders Over 200 MAD</span>
+                <span class="promo-highlight">NEW</span>
+            </div>
+            <div class="promo-item">
+                <span class="promo-icon">🍪</span>
+                <span>Weekend Special: Buy 2 Cookie Boxes Get 1 Free</span>
+                <span class="promo-highlight">LIMITED TIME</span>
+            </div>
+            <div class="promo-item">
+                <span class="promo-icon">🎂</span>
+                <span>Birthday Cakes: 15% Off When Ordered 3 Days in Advance</span>
+                <span class="promo-highlight">HOT DEAL</span>
+            </div>
+            <div class="promo-item">
+                <span class="promo-icon">⭐</span>
+                <span>New Customer Discount: 10% Off Your First Order</span>
+                <span class="promo-highlight">WELCOME</span>
+            </div>
+            <!-- Duplicate items for seamless scrolling -->
+            <div class="promo-item">
+                <span class="promo-icon">🎉</span>
+                <span>SPECIAL OFFER: Free Delivery on Orders Over 200 MAD</span>
+                <span class="promo-highlight">NEW</span>
+            </div>
+            <div class="promo-item">
+                <span class="promo-icon">🍪</span>
+                <span>Weekend Special: Buy 2 Cookie Boxes Get 1 Free</span>
+                <span class="promo-highlight">LIMITED TIME</span>
+            </div>
+            <div class="promo-item">
+                <span class="promo-icon">🎂</span>
+                <span>Birthday Cakes: 15% Off When Ordered 3 Days in Advance</span>
+                <span class="promo-highlight">HOT DEAL</span>
+            </div>
+            <div class="promo-item">
+                <span class="promo-icon">⭐</span>
+                <span>New Customer Discount: 10% Off Your First Order</span>
+                <span class="promo-highlight">WELCOME</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <h2 class="section-title">Our Signature Creations</h2>
+    <div class="products-grid">
+        <a href="products/VANTAGE-CAKE.html" class="product-card">
+    <img src="images/vantage-cake.jpg" alt="VANTAGE CAKE">
+    <h3>VANTAGE CAKE</h3>
+    <p>Vintage cake Un gâteau en forme de cœur rose très joli décoré de perles,avec l'inscription personnalisé happy birthday...parfait pour une fête d'anniversaire </p>
+    <p class="price">240 MAD</p>
+    <div class="quick-info">
+        <div class="info-item">
+            <div class="info-label">Serves</div>
+            <div class="info-value">4-8</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Prep Time</div>
+            <div class="info-value">24h</div>
+        </div>
+    </div>
+</a>
+
+        <a href="products/TRUF-CHOCOLATE-RICHE.html" class="product-card">
+    <img src="images/truf-chocolate-riche.jpg" alt="TRUF CHOCOLATE RICHE">
+    <h3>TRUF CHOCOLATE RICHE</h3>
+    <p>Une boîte de chocolats riche assortis joliment présentés idéal comme cadeau raffiné ou pour une occasion spéciale</p>
+    <p class="price">96MAD</p>
+    <div class="quick-info">
+        <div class="info-item">
+            <div class="info-label">Serves</div>
+            <div class="info-value">16 pièces</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Prep Time</div>
+            <div class="info-value">24h</div>
+        </div>
+    </div>
+</a>
+
+        <a href="products/RED-VELVET.html" class="product-card">
+    <img src="images/red-velvet.jpg" alt="RED VELVET">
+    <h3>RED VELVET</h3>
+    <p>Gâteau red velvet avec une crème blanche onctueuse,parfaite pour les amateurs de desserts raffinés</p>
+    <p class="price">70 MAD</p>
+    <div class="quick-info">
+        <div class="info-item">
+            <div class="info-label">Serves</div>
+            <div class="info-value">4-6</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Prep Time</div>
+            <div class="info-value">24h</div>
+        </div>
+    </div>
+</a>
+
+        <a href="products/MINI-CAKE.html" class="product-card">
+    <img src="images/mini-cake.jpg" alt="MINI CAKE">
+    <h3>MINI CAKE</h3>
+    <p>Un petit gâteau accompagné de 2 cup cake personnalisé et parfait pour une occasion spéciale 
+</p>
+    <p class="price">100 MAD</p>
+    <div class="quick-info">
+        <div class="info-item">
+            <div class="info-label">Serves</div>
+            <div class="info-value">1-2</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Prep Time</div>
+            <div class="info-value">24h</div>
+        </div>
+    </div>
+</a>
+
+       <a href="products/FRAMBOISE-CAKE.html" class="product-card">
+    <img src="images/framboise-cake.jpg" alt="FRAMBOISE CAKE">
+    <h3>FRAMBOISE CAKE</h3>
+    <p>Un gâteau blanc décoré une crème élégant et garni de framboises simple et élégante
+</p>
+    <p class="price">90 MAD</p>
+    <div class="quick-info">
+        <div class="info-item">
+            <div class="info-label">Serves</div>
+            <div class="info-value">2-4</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Prep Time</div>
+            <div class="info-value">24h</div>
+        </div>
+    </div>
+</a>
+
+       <a href="products/COUPLE-CAKE.html" class="product-card">
+    <img src="images/couple-cake.jpg" alt="COUPLE CAKE">
+    <h3>COUPLE CAKE</h3>
+    <p>Un gâteau audacieux, un autre doux. Célébrez votre alchimie avec nos duos complémentaires.</p>
+    <p class="price">150 MAD</p>
+    <div class="quick-info">
+        <div class="info-item">
+            <div class="info-label">Serves</div>
+            <div class="info-value">2</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Prep Time</div>
+            <div class="info-value">24h</div>
+        </div>
+    </div>
+</a>
+
+        <a href="products/COOKIES.html" class="product-card">
+    <img src="images/cookies.jpg" alt="COOKIES">
+    <h3>COOKIES</h3>
+    <p>des cookies décoré avec des crème pistache et des pépites de chocolat Un délicieux mélange de saveurs et de textures
+</p>
+    <p class="price"> 10 MAD pour pc  MAD</p>
+    <div class="quick-info">
+        <div class="info-item">
+            <div class="info-label">Pieces</div>
+            <div class="info-value">6-15</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Prep Time</div>
+            <div class="info-value">24h</div>
+        </div>
+    </div>
+</a>
+
+        <a href="products/BROWNIES.html" class="product-card">
+    <img src="images/brownies.jpg" alt="BROWNIES">
+    <h3>BROWNIES</h3>
+    <p>Des brawnies coupés en carrés dans une boîte parfait pour partager ou servir lors d'une occasion 
+</p>
+    <p class="price">60 MAD</p>
+    <div class="quick-info">
+        <div class="info-item">
+            <div class="info-label">Pieces</div>
+            <div class="info-value">9</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Prep Time</div>
+            <div class="info-value">24h</div>
+        </div>
+    </div>
+</a>
+
+       <a href="products/ANNIVERSAIRE-CAKE.html" class="product-card">
+    <img src="images/anniversaire-cake.jpg" alt="ANNIVERSAIRE CAKE">
+    <h3>ANNIVERSAIRE CAKE</h3>
+    <p>un gâteau d'anniversaire thème spider man et très attractif idéal pour les enfants </p>
+    <p class="price">230 MAD</p>
+    <div class="quick-info">
+        <div class="info-item">
+            <div class="info-label">Serves</div>
+            <div class="info-value">4-8</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Prep Time</div>
+            <div class="info-value">24h</div>
+        </div>
+    </div>
+</a>
+    </div>
+
+<footer>
+    <div class="footer-content">
+        <!-- Footer Text -->
+        <div class="footer-text">
+            <p>&copy; 2025 Chaimae Chakroun. Made with ❤️ and lots of 🍪</p>
+            <p class="footer-tagline">Every celebration deserves a sweet memory!</p>
+        </div>
+
+        <!-- Floating Emojis - Safe for mobile -->
+        <div class="footer-emojis">
+            <span class="emoji e1">🍰</span>
+            <span class="emoji e2">🌸</span>
+            <span class="emoji e3">🍪</span>
+            <span class="emoji e4">🌺</span>
+            <span class="emoji e5">🎂</span>
+            <span class="emoji e6">🌷</span>
+        </div>
+    </div>
+</footer>
+
+<style>
+    footer {
+        background: linear-gradient(135deg, #fd79a8, #e84393);
+        color: white;
+        text-align: center;
+        padding: 40px 20px 60px;
+        margin-top: 50px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .footer-text {
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 3;
+    }
+
+    .footer-text p {
+        margin: 8px 0;
+        font-size: 1.1em;
+    }
+
+    .footer-tagline {
+        font-style: italic;
+        opacity: 0.9;
+        font-size: 1em !important;
+    }
+
+    .footer-emojis {
+        position: relative;
+        height: 80px;
+    }
+
+    .emoji {
+        font-size: 1.8em;
+        position: absolute;
+        animation: float-random 5s ease-in-out infinite;
+        opacity: 0.7;
+    }
+
+    /* Position emojis away from text area */
+    .e1 { left: 10%; top: 20px; animation-delay: 0s; }
+    .e2 { left: 25%; top: 10px; animation-delay: 1s; }
+    .e3 { left: 40%; top: 25px; animation-delay: 2s; }
+    .e4 { left: 60%; top: 15px; animation-delay: 3s; }
+    .e5 { left: 75%; top: 30px; animation-delay: 4s; }
+    .e6 { left: 90%; top: 5px; animation-delay: 5s; }
+
+    @keyframes float-random {
+        0%, 100% { 
+            transform: translateY(0px) rotate(0deg); 
+        }
+        50% { 
+            transform: translateY(-15px) rotate(10deg); 
+        }
+    }
+
+    /* Mobile Responsive - Keep emojis far from text */
+    @media (max-width: 768px) {
+        footer {
+            padding: 30px 15px 80px;
+        }
+
+        .footer-text {
+            margin-bottom: 50px; /* More space between text and emojis */
+        }
+
+        .footer-text p {
+            font-size: 1em;
+        }
+
+        .footer-emojis {
+            height: 60px;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+        }
+
+        /* Reposition emojis lower and spread out on mobile */
+        .e1 { left: 5%; top: 40px; }
+        .e2 { left: 20%; top: 30px; }
+        .e3 { left: 35%; top: 45px; }
+        .e4 { left: 65%; top: 35px; }
+        .e5 { left: 80%; top: 50px; }
+        .e6 { left: 95%; top: 25px; }
+    }
+
+    @media (max-width: 480px) {
+        .footer-text {
+            margin-bottom: 60px; /* Even more space on small phones */
+        }
+
+        .footer-emojis {
+            height: 50px;
+        }
+
+        .emoji {
+            font-size: 1.3em;
+        }
+
+        /* Adjust positions for very small screens */
+        .e1 { left: 2%; top: 35px; }
+        .e2 { left: 18%; top: 25px; }
+        .e3 { left: 38%; top: 40px; }
+        .e4 { left: 62%; top: 30px; }
+        .e5 { left: 82%; top: 45px; }
+        .e6 { left: 98%; top: 20px; }
+    }
+</style>

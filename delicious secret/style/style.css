@@ -1,0 +1,84 @@
+/* HEADER */
+header {
+  background: linear-gradient(135deg, #fd79a8, #e84393);
+  color: white;
+  text-align: center;
+  padding: 100px 20px 80px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+  background-size: 200% 200%;
+  animation: gradientMove 10s ease-in-out infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* FLOATING EMOJIS */
+.floating-emojis span {
+  position: absolute;
+  font-size: 2.2em;
+  opacity: 0.4;
+  animation: floatEmoji 6s ease-in-out infinite;
+}
+
+.floating-emojis span:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.floating-emojis span:nth-child(2) { top: 20%; right: 12%; animation-delay: 1s; }
+.floating-emojis span:nth-child(3) { top: 40%; left: 15%; animation-delay: 2s; }
+.floating-emojis span:nth-child(4) { top: 60%; right: 15%; animation-delay: 3s; }
+.floating-emojis span:nth-child(5) { top: 75%; left: 8%; animation-delay: 4s; }
+.floating-emojis span:nth-child(6) { top: 85%; right: 8%; animation-delay: 5s; }
+
+@keyframes floatEmoji {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(6deg); }
+}
+
+/* HEADER CONTENT */
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 4em;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: linear-gradient(45deg, #fff, #ffeaa7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: floatTitle 3.5s ease-in-out infinite;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes floatTitle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.flower {
+  display: inline-block;
+  font-size: 0.8em;
+  animation: spinFlower 4s linear infinite;
+}
+
+@keyframes spinFlower {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+header p {
+  margin-top: 15px;
+  font-size: 1.3em;
+  color: #fff;
+  opacity: 0.95;
+  font-weight: 400;
+}
+
